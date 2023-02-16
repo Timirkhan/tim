@@ -1,0 +1,425 @@
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+input,button,textarea{font-family:inherit;}
+nav,footer,header,aside{display: block;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/* ------------------------------------------------------------------------- */
+
+body {
+	font-family: "Montserrat", sans-serif;
+	font-size: 15px;
+}
+
+h2 {
+    font-size: 34px;
+    line-height: 42px;
+    font-weight: 500;
+}
+
+p {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.container {
+	width: 100%;
+	max-width: 964px; /*20px = 10px + 10px добавленных для адаптации*/
+	padding: 0 10px; /*что бы при адаптации плотно не прилегал контент в блоках*/
+	margin: 0 auto;
+}
+
+.page {
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------------------- */
+
+/* --- header --- */
+
+.header {
+	width: 100%;
+
+	padding: 50px 0 30px 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+}
+
+.header.fixed { /*для фиксации хедера */
+	padding: 30px 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	transform: translate3d(0, 0, 0); /*что бы менюшка не дёргалась при скроле*/
+	
+	background-color: #9e9e9e;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
+}
+
+/* nav */
+
+.nav {
+	font-size: 17px;
+	display: flex;
+    justify-content: space-between;
+	gap: 32px;
+}
+
+.nav:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    max-width: 944px;
+    bottom: 0;
+
+    border: 1px solid #828282;
+}
+
+.nav__link {
+	display: inline-block;
+	vertical-align: top; /*что бы они шли в строку и можно было задать мэрджин*/
+	position: relative;
+
+	color:#828282;
+    font-size: 18px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.nav__link:hover {
+    color: #000;
+}
+
+/*----- nav toggle ----- */
+
+.nav-toggle {
+	width: 30px;
+	padding: 10px 0;
+	display: none;
+
+	font-size: 0; /*скрываем надпись menu*/
+	color: transparent;
+
+	border: 0;
+	background: none;
+	cursor: pointer;
+
+	position: absolute;
+	right: 24px;
+	z-index: 1;
+}
+
+.nav-toggle:focus {
+	outline: 1;
+}
+
+.nav-toggle__item {
+	display: block;
+	width: 100%;
+	height: 3px;
+
+	background-color: #000000;	
+	
+	position: absolute; /*позиционируем данный элемент по центру*/
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	transition: background .2s linear; /*транзижн для бэкраунда*/
+}
+
+.nav-toggle.active .nav-toggle__item {
+	background: none;
+}
+
+.nav-toggle.active .nav-toggle__item:before {
+	transform-origin: left top;
+	transform: rotate(45deg) translate3d(0, -2px, 0);	
+}
+
+.nav-toggle.active .nav-toggle__item:after {
+	transform-origin: left bottom;
+	transform: rotate(-45deg) translate3d(0, 3px, 0);	
+}
+
+.nav-toggle__item:before,
+.nav-toggle__item:after {
+	content: "";
+	width: 100%;
+	height: 3px;
+
+	background-color: #000000;
+
+	position: absolute;
+	left: 0;
+	z-index: 1;
+
+	transition: transform .2s linear;
+}
+
+.nav-toggle__item:before {
+	top: -8px;
+}
+
+.nav-toggle__item:after {
+	bottom: -8px;
+}
+
+/* bio */
+
+.bio {
+    padding-top: 150px;
+}
+
+.bio__glav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.bio__ima h1 {
+    font-size: 47px;
+    font-weight: bold;
+    line-height: 59px;
+    color: #070707
+}
+
+.bio__rod {
+    margin-top: 60px;
+}
+
+.bio__trans {
+    margin-top: 60px;
+    margin-right: -50px;
+    transform: rotate(-90deg);
+}
+
+.bio__ru, .bio__eng {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #828282;
+}
+
+.bio__foto {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    width: 100%;
+}
+
+.bio__foto img {
+    height: auto;
+    width: 100%;
+}
+
+/* about */ 
+
+.about {
+    padding: 100px 0 105px 0;
+    margin: 125px 0 105px 0;
+    text-align: center;
+    background: #F6F6F6;;
+}
+
+.about__text {
+    margin-top: 15px;
+}
+
+/* skills */
+
+.skills {
+    padding: 90px 0 110px 0;
+    text-align: center;
+}
+
+.skills p{
+    margin-top: 70px;
+}
+
+.skills__icon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 82px;
+}
+
+.skills__icons {
+    padding: 0 15px;
+    flex: 1 1 0;
+    text-align: center;
+}
+
+.skills__title {
+    margin: 25px 0 42px 0;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+
+    color: #828282;
+}
+
+.skills__titlelast {
+    margin: 25px 0 59px 0;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+
+    color: #828282;
+}
+
+/* portfolio */
+
+.portfolio {
+    background-color: #F6F6F6;;
+    padding: 113px 0 95px 0;
+    text-align: center;
+}
+
+.portfolio__card img {
+    height: auto;
+    width: 100%;
+}
+
+.portfolio h2 {
+    margin-bottom: 47px;
+}
+
+.portfolio__a {
+    margin: 45px 0 99px 0;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.portfolio__a a {
+    text-decoration: underline;
+    color: #000;
+}
+
+/* footer */
+
+.footer {
+    padding: 115px 0 123px 0;
+    text-align: center;
+}
+
+.footer p {
+    margin-top: 20px;
+    color: #070707;
+}
+
+.footer__send {
+    margin-top: 43px;
+    display: inline-block;
+    padding: 13px 30px;
+    border-radius: 35px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    background: #070707;
+    text-decoration: none;
+    transition: background .1s linear, color .1s linear;
+}
+
+.footer__send:hover {
+    box-shadow: 1px 4px #070707;
+    background-color: #070707;
+    color: #FFFFFF;
+}
+
+.footer__icon {
+    margin: 90px auto 0;
+    display: flex;
+    width: 343px;
+    justify-content: space-between;
+}
+
+.fa-brands {
+    font-size: 50px;
+    color: #070707;
+}
+
+.footer__title p {
+    font-size: 14px;
+    line-height: 30px;
+
+    color: #828282;
+}
+
+@media (max-width:600px){
+    /*=nav=*/
+	.nav {
+		display: none;
+		width: 100%;
+
+		position: absolute;
+		top: 100%;
+		left: 0;
+
+		background-color: #808080;
+	}
+
+	.nav.active {
+		display: block;
+	}
+
+	.nav__link {
+		display: block;
+		margin: 0;
+		padding: 8px 20px;
+        color: #fff;
+	}
+
+	.nav-toggle {
+		display: block;
+        color: #000;
+	}
+
+	.button {
+		text-align: center;
+		padding-top: 150px;
+	}
+}
+
+@media (max-width: 500px){
+    .bio__glav {
+        display: block;
+    }
+
+    .bio__rod {
+        margin-top: 20px;
+    }
+
+    .bio__trans {
+        display: none;
+    }
+
+    .about {
+        padding-top: 83px;
+    }
+
+    .skills__icon {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .skills__icons {
+        width: 50%;
+        margin-bottom: 20px;
+    }
+
+}
